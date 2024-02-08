@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+om_hospital.access_hospital_patients,access_hospital_patients,om_hospital.model_hospital_patients,base.group_user,1,1,1,1
+om_hospital.access_hospital_surgery_patients,access_hospital_surgery_patients,om_hospital.model_hospital_surgery_patients,base.group_user,1,1,1,1
+om_hospital.access_hospital_surgery_department,access_hospital_surgery_department,om_hospital.model_hospital_surgery_department,base.group_user,1,1,1,1
+om_hospital.access_hospital_doctor,access_hospital_doctor,om_hospital.model_hospital_doctor,base.group_user,1,1,1,1

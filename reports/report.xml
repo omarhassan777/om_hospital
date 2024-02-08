@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+    
+      id="report_patient_card"
+        string="patient card"
+          model="hospital.patients"
+           report_type="qweb-html"   
+        name="om_hospital.report_patient"
+      file="om_hospital.report_patient"
+
+  />
+    <report
+    
+      id="report_patient_card_2"
+        string="patient card_2"
+          model="hospital.patients"
+          report_type="qweb-pdf"
+        name="om_hospital.report_patient_2"
+      file="om_hospital.report_patient_2"
+
+  />
+
+</odoo>
+
+
+<!-- <div style="text-align: left; margin-bottom: 20px;">
+                    
+                Modify the logo as needed 
+                    //<img src="https://e7.pngegg.com/pngimages/867/492/png-clipart-hospital-building-graphy-building-white-building.png" alt="Company Logo" style="max-height: 100px;"/>
+                    <img src="/om_hospital/static/img/hospital.png" alt="Company Logo" style="max-height: 100px;"/>
+                    <div>
+                                
+                                
+                         </div>
+                </div> -->
+
+                <!-- <td><t t-esc="line_index +1"/></td> -->
+
+                 <!-- <t t-foreach="docs" t-as="doc">   
+                                      </tr>
+                                   -->

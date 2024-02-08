@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id= "action__hospital_patient_surgery_department" model="ir.actions.act_window">
+     <field name= "name"> Department_surgery</field>                 
+     <field name="res_model">hospital.surgery.department</field><!-- res_model value should match your actual model nam-->
+     
+     <field name="type">ir.actions.act_window</field> 
+     <field name="view_mode">tree,form</field>
+     </record>
+
+    <record id="view__hospital_patient_surgery_department_form" model="ir.ui.view">
+        <field name="name">hospital.surgery.department.form</field>
+        <field name="model">hospital.surgery.department</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="capacity"/>
+                            <field name="patients"/>
+                            <field name="patient_test_result"/>
+                            <field name="is_open"/>
+                            <!-- <field name="blood_types_depart"/> -->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Patients">
+                            <field name="patient_id">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="create_uid"/><!-- Add  fields as created by defult in odoo  -->
+                                    <field name="age"/>
+                                    <!-- Add more fields as needed -->
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id= "view_hospital_patients_surgery_tree" model="ir.ui.view">
+     <field name= "name">hospital.surgery.department.tree</field>                 
+     <field name="model">hospital.surgery.department</field><!-- -->
+        <field name="arch" type="xml">
+        
+                <tree> 
+                    <field name="name"/>
+                    <field name="capacity"/>
+                    <field name="patients"/>
+                    <field name="is_open"/>          
+                </tree>
+        </field>
+     </record>
+
+ <menuitem id="menu_hospital_patient_surgery_department"
+    name="Department_surgery"
+    parent="menu_hospital_root"
+    action="action__hospital_patient_surgery_department"
+    sequence="10"/>
+    
+
+
+
+</odoo>

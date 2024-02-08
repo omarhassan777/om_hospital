@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id= "action_hospital_doctor" model="ir.actions.act_window">
+     <field name= "name"> Doctors</field>                 
+     <field name="res_model">hospital.doctor</field><!-- res_model value should match your actual model nam-->
+     
+     <field name="type">ir.actions.act_window</field> 
+     <field name="view_mode">tree,form</field>
+     </record>
+
+     
+<record id= "view_hospital_doctor_form" model="ir.ui.view">
+     <field name= "name">hospital.doctor.form</field>                 
+     <field name="model">hospital.doctor</field><!-- -->
+     <field name="arch" type="xml">
+     
+            <form> 
+     <filter string="Archived" name="filter_male" domain="[('gender','=','male')]"/>
+
+                <sheet> 
+                
+                        <group>       
+         <!-- <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/> -->
+                 
+                                <group>
+                                    <field name="first_name"/>
+                                    <field name="last_name"/>
+                                    <field name="gender"/>
+                                    <field name="image"/>
+                                    <field name="active" invisible="1"/>
+
+                                   
+                              </group>
+                                <group>
+                                  
+                                    <field name="price_outzero"/>
+                                   
+                              </group>
+                              
+                        </group>
+
+                </sheet>
+                
+            </form>
+            
+       </field>
+    </record>
+
+    <record id= "view_hospital_doctor_tree" model="ir.ui.view">
+     <field name= "name">hospital.surgery.department.tree</field>                 
+     <field name="model">hospital.doctor</field><!-- -->
+        <field name="arch" type="xml">
+        
+                    <tree> 
+                                <field name="first_name"/>
+                                    <field name="last_name"/>
+                                    <field name="image"/>
+                                    
+                    </tree>
+        </field>
+     </record>
+
+
+
+<!-- <tree string="Products Price List" sample="1">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="discount_policy" groups="product.group_discount_per_so_line"/>
+                <field name="currency_id" groups="base.group_multi_currency"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree> -->
+
+ <menuitem id="menu_hospital_doctor"
+    name="Doctors"
+    parent="menu_hospital_Mangement"
+    action="action_hospital_doctor"
+    sequence="10"/>
+
+</odoo>

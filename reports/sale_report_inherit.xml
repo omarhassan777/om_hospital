@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo> 
+<!-- <template id="sale_report_inherit" inherit_id="sale.report_saleorder_document">
+           <xpath expr="//div[@class='row mt-4 mb-4']" position="after">
+                <div class="row mt-4 mb-4" id="test_inherit">
+                
+                    <strong>Test inherit in this report hعمور </strong>
+                </div>
+           </xpath>
+</template> -->
+</odoo>

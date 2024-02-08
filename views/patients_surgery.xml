@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id= "action_hospital_patients_surgery" model="ir.actions.act_window">
+     <field name= "name">Patients_surgery</field>                 
+     <field name="res_model">hospital.surgery.patients</field><!-- res_model value should match your actual model nam-->
+     
+     <field name="type">ir.actions.act_window</field> 
+     <field name="view_mode">tree,form</field>
+     </record>
+     
+        
+<!--form and tree -->
+
+    <record id= "view_hospital_patients_surgery_form" model="ir.ui.view">
+     <field name= "name"> hospital.surgery.patients.form</field>                 
+     <field name="model">hospital.surgery.patients</field><!-- -->
+     <field name="arch" type="xml">
+     
+            <form> 
+                <sheet> 
+                
+                        <group>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="email"/>
+                                    <field name="age" />
+                                    <field name="gender" />
+                                    <field name="Birth_data"
+                                    attrs =" {'invisible': [('gender','=','female')]}"
+                                     />
+                                    <field name="is_child"/>
+                                    <field name="pcr" />
+                                    <field name="cr_ratio"/>
+                                    <field name="blood_type"/>
+                              </group>
+                              <group>
+                                <!-- <field name="blood_type"/> -->
+                                
+                                <field name="image" widget="image"/>
+                                <field name="notes"/>
+                                <field name="department_id"/>
+                                <field name="department_capacity"/>
+                                <field name="test"/>
+                                
+                                
+                                
+                              </group>
+                        </group>
+                         <notebook> 
+                                <page string="adress">
+                                      <!-- <group> -->
+                                        <field name="adress"/>
+                                      <!-- </group> -->
+                                  </page>
+                                <page string="history">
+                                      <!-- <group> -->
+                                      <field name="history" widget="html"/>
+                                      
+                                      <!-- </group> -->
+                                  </page>
+                                
+                                <page string="Doctor">
+                                      <!-- <group> -->
+                                      <field name="doctor_id"/>                                                                                 
+                                      <!-- </group>
+                                      <field name="doctor_id"
+                                                widget='many2many_tags'/>
+                                       -->
+                                  </page>
+
+                        </notebook> 
+
+                </sheet>
+                
+            </form>
+            
+       </field>
+    </record>
+  
+  
+
+    <record id="view_hospital_patients_surgery_tree" model="ir.ui.view">
+    <field name="name">hospital.surgery.patients.tree</field>
+    <field name="model">hospital.surgery.patients</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="Birth_data"/>
+            <field name="age"/>
+            <field name="name"/>
+            <field name="blood_type"/>
+            
+            <field name="is_child"/>
+            <field name="pcr"/>
+            <!-- Add more fields as needed -->
+        </tree>
+    </field>
+    </record>
+
+
+
+
+ <menuitem id="menu_hospital_patient_surgery"
+    name="Patients_surgery"
+    parent="menu_hospital_opertion_surgery"
+    action="action_hospital_patients_surgery"
+    sequence="10"/>
+
+    
+
+    </odoo>

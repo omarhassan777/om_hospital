@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<menuitem id="menu_hospital_root"
+name="Hospital"    
+sequence="10"/>
+<!-- name menu for user -->
+
+<menuitem id="menu_hospital_opertions"
+name="Opertions"
+parent="menu_hospital_root"
+sequence="10"/>
+ 
+<menuitem id="menu_hospital_Mangement"
+name="Mangement"
+parent="menu_hospital_root"
+sequence="10"/>
+ 
+
+<!-- opertion_surgery inherit from menu_hospital_root-->
+<menuitem id="menu_hospital_opertion_surgery"
+name="opertions_surgery"
+parent="menu_hospital_root"
+sequence="10"/>
+
+
+
+
+
+</odoo>

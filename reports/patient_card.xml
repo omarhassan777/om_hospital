@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_patient">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+
+            <h2>Patient Card</h2>
+            <table  class="table table-condensed" style="text-align: center;  width:100%;">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Image</th>
+                        <th>QR</th>
+                        <th>barcode</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="docs" t-as="doc">
+                        <tr>
+                            <td style="text-align: center; vertical-align: middle;">
+                                    <t t-esc="doc.name" />
+                            </td>
+
+                                <td style="text-align: center; vertical-align: middle;">
+                                    <t t-esc="doc.age" />
+                                    <t t-if="doc.age &lt;= 20"> (Child)</t>
+                                    <t t-if="doc.age &gt; 20"> (Young)</t>
+                                </td>
+
+                            <td style="text-align: center; vertical-align: middle;">
+                                <t t-esc="doc.gender" />
+                            
+                            </td>
+
+                          
+                                <t t-if="doc.image">
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <img t-att-src="'data:image/png;base64,' + doc.image.decode('utf-8')" style="max-width: 100px; max-height: 100px;" />
+                                    </td>
+                                </t>
+
+
+                                <t t-else="">
+                                    <td style="text-align: center; vertical-align: middle;">No Image</td>
+
+                                </t>
+                         
+
+
+                            <td style="text-align: center; vertical-align: middle;">
+
+                              <img t-att-src="'/report/barcode/QR/' + doc.name" style="width: 80px; height: 80px;" />
+
+                             </td>
+                            <td style="text-align: center; vertical-align: middle;"> 
+                            
+                                 <img t-att-src="'/report/barcode/Code128/' + doc.name" style="width: 80px; height: 80px;" />
+
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+
+            <t t-foreach="docs" t-as="doc">
+                        <div class="patient-info-overlay" style="border: 2px solid #000; padding: 10px; margin: 10px;">
+                            <div class="overlay-content" style="display: flex; align-items: center;">
+                                <img src="/om_hospital/static/img/patient-female.png" alt="Patient Card Image" style= "width: 70%;" />
+                                <div class="patient-details" style="margin-left: 20px;">
+                                    <p style="font-size:40px;">
+                                        Name: <t t-esc="doc.name" />
+                                        Age: <t t-esc="doc.age" /> 
+                                        Gender: <t t-esc="doc.gender" />
+                                    </p>
+                                    <div>
+                                        <img t-att-src="'/report/barcode/QR/' + doc.name" style="width: 80px; height: 80px;" />
+                                        <img t-att-src="'/report/barcode/Code128/' + doc.name" style="width: 80px; height: 80px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+        </t>
+    </t>
+</template>
+    
+        <!-- <template id="report_patient">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.external_layout">
+                <head>
+                    <style>
+                        .container {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                            gap: 20px;
+                            padding: 20px;
+                            
+                        }
+
+                        .gallery {
+                            margin: 11px;
+                            border: 7px solid #ccc;
+                            width: 100%;
+                        }
+
+                        .gallery:hover {
+                            border: 1px solid #777;
+                        }
+
+                        .gallery img {
+                            width: 100%;
+                            height: auto;
+                        }
+
+                        .desc {
+                            padding: 20px;
+                            text-align: left;
+                            background-color: palegoldenrod;
+                            color: black;
+                        }
+
+                        p.round3 {
+                            border: 22px solid red;
+                            border-radius: 12px;
+                            padding: 5px;
+                        }
+                    </style>
+                </head>
+                <div class="grid-container">
+                    <div class="gallery card mb-4 round3 bg-gray">
+                        <a target="_blank">
+                            <t t-if="doc.image">
+                                <img t-att-src="'data:image/png;base64,'+doc.image.decode('utf-8')" alt="Patient Image" class="img-fluid" />
+                            </t>
+                        </a>
+                        <div class="desc text-left">
+                            <h3 class="mt-4 mb-4">Patient Card</h3>
+                            <p><strong>Patient Name:</strong> <t t-esc="doc.name" /></p>
+                            <p><strong>Gender:</strong> <t t-esc="doc.gender" /></p>
+                            <p><strong>Age:</strong> <t t-esc="doc.age" /></p>
+                            <p><strong>barcode: </strong></p>
+                            <div class="text-left">
+                                <img t-att-src="'/report/barcode/Code128/' + doc.name" alt="Barcode" class="img-fluid" style="width: 100px; height: 50px;" />
+                            </div>
+                            <p><strong>QR: </strong></p>
+                            <div class="text-right">
+                                <img t-att-src="'/report/barcode/QR/' + doc.name" style="width: 100px; height: 50px;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+</template> -->
+
+
+<!-- <div class="col-6">
+                        <div class="card h-100 " style="width: 18rem">
+                            <img class="card-img-top" src="static/doctor.jpg" alt="Card image cap" />
+                                <div class="card-body"> 
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.
+                                </p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                        </div>
+                    </div> -->
+
+        
+        
+        
+         <!-- <template id="report_patient">
+    <t t-call="web.html_container">
+        
+            <t t-call="web.external_layout">
+                
+
+                 <head>
+                                <style>
+                                div.gallery {
+                                margin: 11px;
+                                border: 7px solid #ccc;
+                                float: left;
+                                width: 300px;
+                                }
+
+                                div.gallery:hover {
+                                border: 1px solid #777;
+                                }
+
+                                div.gallery img {
+                                width: 100%;
+                                height:  100% ;
+                                }
+
+                                div.desc {
+                                padding: 20px;
+                                text-align: left;
+                                }
+                                p.round3 {
+                                    border: 22px solid red;
+                                    border-radius: 12px;
+                                    padding: 5px;
+                                    }
+                                    .container {
+                                        display: flex;
+                                        flex-wrap: wrap;
+                                    }
+
+                                    .col-md-6 {
+                                        width: 50%;
+                                        padding: 10px;
+                                        box-sizing: border-box;
+                                        }
+                                </style>
+                        </head>
+
+                 
+                 
+                <div class="container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="col-md-6">
+                        <div class="gallery card mb-4 round3 bg-gray" style="col-auto col-3 mw-100 mb-2; color: palegoldenrod;">
+   
+                                        <a target="_blank">
+                                            <t t-if="doc.image">
+                                                <img t-att-src="'data:image/png;base64,'+doc.image.decode('utf-8')" alt="Patient Image" class="img-fluid" />
+                                            </t>
+                                        </a>
+
+                                        <div class="desc bg-darkkhaki text-left" style="col-auto col-3 mw-100 mb-2 ; background-color: palegoldenrod; color: black;">
+                                            <h3 class="mt-4 mb-4">Patient Card</h3>
+                                            <p><strong>Patient Name:</strong> <t t-esc="doc.name" /></p>
+                                            <p><strong>Gender:</strong> <t t-esc="doc.gender" /></p>
+                                            <p><strong>Age:</strong> <t t-esc="doc.age" /></p>
+                                            <p>
+                                            <strong>barcode: </strong>
+                                            </p>
+                                            <p>
+                                                <div class="text-left">
+                                                    <img t-att-src="'/report/barcode/Code128/' + doc.name" alt="Barcode" class="img-fluid" style="width: 100px; height: 50px;" />
+                                                </div>
+                                            </p>
+
+                                            <p><strong>QR: </strong></p>
+                                            <p class="text-right"> 
+                                                <div class="text-right">
+                                                    <img t-att-src="'/report/barcode/QR/' + doc.name" style="width: 100px; height: 50px; " />
+                                                </div>
+                                            </p>
+                                        </div>
+                                     </div>
+                                      
+                        </div>            
+                         </t>            
+                </div>
+           
+        </t>
+    </t>
+</template> -->
+
+
+           
+
+
+
+    
+    <!-- <template id="report_patient">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page">
+            
+                               
+                             
+
+                             <div class=" row" style="text-align: right; margin-bottom: 20px; display: flex;  ">
+                                <div class="col-md-6">
+                                    <img src="/om_hospital/static/img/patient_male.png" alt="Company Logo" />
+                                    <span class="hospital-info">The hospital built in 1997</span>
+                                    <span class="additional-text">Additional Text</span>
+                                </div>
+                                
+                        </div>
+
+
+
+
+                
+                 
+                <h2>Patient Card</h2>
+                <div style="text-align: left;">
+                
+                
+
+                <table class ="table table-bordered" style = "border-color:grey;  width: 75%;  "  >
+                 
+                    <thead  style = "background-color: gainsboro;" >
+                        <tr>
+                            <th style="font-weight: bold; color: black;">#</th>
+                            <th style="font-weight: bold; color: black;">QR</th>
+                            <th style="font-weight: bold; color: black;">barcode</th>
+                            <th style="font-weight: bold; color: black;">Name</th>
+                            <th style="font-weight: bold; color: black;">Age</th>
+                            <th style="font-weight: bold; color: black;">Gender</th>
+                            <th style="font-weight: bold; color: black;">Image</th> 
+                            <th style="font-weight: bold; color: black;">Height</th>
+                            <th style="font-weight: bold; color: black;">Notes</th>                           
+                                                  
+                            
+                        </tr>
+                    </thead>
+                    <tbody  style = "background-color: darkkhaki;" >
+                        <t t-set="i" t-value="1" />
+                        <t t-foreach=" docs" t-as="doc">
+                            <tr>
+                                  <td>
+                                    <span t-esc="i"/> 
+                                    <t t-set="i" t-value="i+1"/> 
+                                     
+                                </td>
+                                <td>
+                                      <img t-att-src="'/report/barcode/QR/' + doc.name" alt="QR Code" style="width: 100px; height: 100px; " />
+                                     
+                                </td>
+                                <td>
+                                    <img t-att-src="'/report/barcode/Code128/' + doc.name"  style="width: 100px; height: 100px; " />                                     
+                                </td>
+
+                                 
+                                 <td><t t-esc="doc.name" /></td>
+                                <td><t  t-esc="doc.age" />
+                                    <t t-if="doc.age &gt;= 20">
+                                         , adult
+                                    </t>
+                                    <t t-else="">
+                                        , child
+                                    </t>                              
+                                </td>
+                                <td><t t-esc="doc.gender" /></td>
+                                <td>
+
+                                                    <t t-if="doc.image">
+                                                        <img t-att-src="'data:image/png;base64,'+doc.image.decode('utf-8')" alt="Patient Image" style="max-height: 50px; max-width: 50px;" />
+                                                    </t></td>
+                                <td><t t-esc="doc.notes" /></td>
+                                
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+               
+
+            </div>
+            </div>
+        </t>
+    </t>
+</template> -->
+
+            
+                   
+
+<template id ="report_patient_2">
+       <t t-call="web.html_container"> <!--   name of tamplate  -->
+          <t t-call="web.external_layout">  <!--   header -->
+                <h2>patient card</h2>
+                
+                <t t-foreach="[1,2,3,4]" t-as="i" >
+                  
+                        <p>
+                            <t t-out= 'i'/>
+                        </p>
+
+                </t> 
+                
+                           
+            </t>
+        </t>
+</template>
+
+
+
+<!-- <template id="report_patient">
+          <t t-call="web.html_container">
+
+                <t t-call="web.external_layout">
+                      <t t-foreach="docs" t-as="doc">
+                         
+                        <h2>Patient Card</h2>
+                        Patient Name: <strong><t t-esc="doc.name" /></strong><br/>
+                        Age: <strong><t t-esc="doc.age" /></strong><br/>
+                        Gender: <strong><t  t-esc="doc.gender" /></strong><br/>
+                        hight: <strong><t t-esc="doc.age" /></strong><br/>
+                        width: <strong><t t-esc="doc.width" /></strong><br/>
+                        notes: <strong><t t-esc="doc.notes" /></strong><br/>
+                    </t>
+              </t>
+            </t>
+</template> -->
+
+
+</odoo>
